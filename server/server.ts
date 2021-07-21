@@ -19,23 +19,23 @@ const server = http.createServer(app);
 
 const BEARER_TOKEN = 'AAAAAAAAAAAAAAAAAAAAAI4OHgEAAAAAlbk0HSIAqcc3havrrU9j2NeAQ34%3DzJmzwHuQerd8JJ2TeuHfqwKgBt6bK4tk93w3ocBB2vPuKMF3cG';
 
-const searchURL = new URL('https://api.twitter.com/1.1/search/tweets.json?q=beer&count=5&result_type=popular');
+const searchURL = (keyword) => new URL(`https://api.twitter.com/1.1/search/tweets.json?q=${keyword}&count=5&result_type=popular`);
 
 app.get('/api/search', async (_req, res) => {
     if (!BEARER_TOKEN) {
         res.status(400).send('Could not authenticate');
     }
-    console.log(_req.headers.host);
+    
     const token = BEARER_TOKEN;
     const requestConfig = {
-        url: searchURL,
+        url: searchURL(res.req.query.keyword),
         auth: {
             bearer: token
         },
         json: true
     };
     res.set({
-        'Access-Control-Allow-Origin': 'http://localhost:3000, 127.0.0.1:80',
+        'Access-Control-Allow-Origin': 'http://localhost:3000',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     });
     try {
@@ -49,7 +49,7 @@ app.get('/api/search', async (_req, res) => {
                 throw new Error(response.body.error.message);
             }
         }
-        res.send(response);
+        res.send(response.body);
     }
     catch (e) {
         res.send(e);
