@@ -18,17 +18,18 @@ const tweetFeedSlice = createSlice({
             state.tweets.push(...loadMore);
         },
         filterTweets(state: ITweetFeedStore, action) {
-            state.prevTweets = state.tweets;
+            state.prevTweets = [...state.tweets];
+
             const filtered = [];
             for (const tweet of state.tweets) {
-                if (tweet.hashtags.filter((hashtag) => hashtag === action.payload).length !== 0) {
+                if (tweet.hashtags.indexOf(action.payload) > -1) {
                     filtered.push(tweet);
-                } 
+                }
             }
             state.tweets = filtered;
         },
         unsetFilter(state: ITweetFeedStore, action) {
-            state.tweets = state.prevTweets;
+            state.tweets = [...state.prevTweets];
             state.prevTweets = [];
         }
     }
