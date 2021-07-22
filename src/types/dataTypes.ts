@@ -6,6 +6,7 @@ export interface ITitleProps {
 export interface ISearchBarProps {
     placeholder: string;
     value: string;
+    onChange: any; 
 }
 
 export interface ITweetListProps {
@@ -25,4 +26,13 @@ export interface IHashtagProps {
 
 export interface IHashtagContainerProps {
     hashtagList: IHashtagProps[];
+}
+
+// Action types
+interface IAction {
+    type: string;
+}
+
+export interface IKeywordChange extends IAction {
+    keyword: string;
 }
