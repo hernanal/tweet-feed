@@ -1,10 +1,12 @@
 import './view/style/main.scss';
 import Title from './components/Title';
+import SearchBar from './components/SearchBar';
 
-function App() {
+const App = () => {
   return (
     <div className="main">
       <Title text='Twitter Feed'/>
+      <SearchBar placeholder='Search by keyword' value='Test keyword'/>
     </div>
   );
 }
