@@ -1,4 +1,9 @@
 // Component prop types
+interface IClickable {
+    onClick: () => any;
+    text: string;
+}
+
 export interface ITitleProps {
     text: string;
 };
@@ -12,6 +17,7 @@ export interface ISearchBarProps {
 export interface ITweetListProps {
     tweets: ITweetProps[];
     onClickTweetHashtag: () => any;
+    onClickLoadMore: () => any;
 }
 
 export interface ITweetProps {
@@ -22,15 +28,14 @@ export interface ITweetProps {
     onClickHashtag: () => any;
 }
 
-export interface IHashtagProps {
-    onClick: () => any;
-    text: string;
-}
+export interface IHashtagProps extends IClickable {}
 
 export interface IHashtagContainerProps {
     hashtagList: IHashtagProps[];
     onClickHashtag: () => any;
 }
+
+export interface ILinkProps extends IClickable {}
 
 // Action types
 interface IAction {
