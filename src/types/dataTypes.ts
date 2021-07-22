@@ -38,10 +38,19 @@ export interface IHashtagContainerProps {
 export interface ILinkProps extends IClickable {}
 
 // Action types
-interface IAction {
+export interface IAction {
     type: string;
 }
 
 export interface IKeywordChange extends IAction {
     keyword: string;
+}
+
+// Store types
+export interface ISearchBarStore {
+    keyword: string;
+}
+
+export interface ITweetFeedStore {
+    tweets: ITweetProps[];
 }
