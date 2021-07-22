@@ -6,7 +6,7 @@ const initialState: ITweetFeedStore = {
 };
 
 const tweetFeedSlice = createSlice({
-    name: 'tweetFeed',
+    name: 'tweetfeed',
     initialState,
     reducers: {
         getTweets(state: ITweetFeedStore, action) {
