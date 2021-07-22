@@ -8,7 +8,7 @@ const App = () => {
   return (
     <div className="main">
       <Title text='Twitter Feed'/>
-      <SearchBar placeholder='Search by keyword' value='Test keyword'/>
+      <SearchBar onChange={() => null} placeholder='Search by keyword' value='Test keyword'/>
       <TweetList tweets={[]}/>
       <HashtagContainer hashtagList={[]}/>
     </div>
