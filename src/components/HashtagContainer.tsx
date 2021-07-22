@@ -1,6 +1,7 @@
 import Title from "./Title";
 import HashtagButton from "./HashtagButton";
 import { IHashtagProps, IHashtagContainerProps } from '../types/dataTypes';
+import { memo } from "react";
 
 const HashtagContainer = (props: IHashtagContainerProps) => {
     return (
@@ -11,4 +12,8 @@ const HashtagContainer = (props: IHashtagContainerProps) => {
     );
 };
 
-export default HashtagContainer;
+const areEqual = (prevProps: IHashtagContainerProps, nextProps: IHashtagContainerProps) => {
+    return prevProps === nextProps ? true : false;
+};
+
+export default memo(HashtagContainer, areEqual);

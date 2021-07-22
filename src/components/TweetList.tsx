@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { ITweetListProps, ITweetProps } from '../types/dataTypes';
 import Tweet from './Tweet';
 
@@ -9,4 +10,8 @@ const TweetList = (props: ITweetListProps) => {
     );
 };
 
-export default TweetList;
+const areEqual = (prevProps: ITweetListProps, nextProps: ITweetListProps) => {
+    return prevProps === nextProps ? true : false;
+};
+
+export default memo(TweetList, areEqual);
