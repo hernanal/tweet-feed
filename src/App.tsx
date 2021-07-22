@@ -10,7 +10,7 @@ const App = () => {
     <div className="main">
       <Title text='Twitter Feed'/>
       <SearchBar onChange={() => console.log('Search bar on change')} placeholder='Search by keyword' value='Test keyword'/>
-      <TweetList tweets={[]} onClickTweetHashtag={() => console.log('Tweet hashtag clicked')}/>
+      <TweetList tweets={[]} onClickTweetHashtag={() => console.log('Tweet hashtag clicked')} onClickLoadMore={() => console.log('Load more clicked')}/>
       <HashtagContainer hashtagList={[]} onClickHashtag={() => console.log('Hashtag clicked from container')}/>
     </div>
   );
