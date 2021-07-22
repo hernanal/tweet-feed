@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { ITweetProps, IHashtagProps } from '../types/dataTypes';
 import HashtagButton from './HashtagButton';
 
@@ -16,4 +17,8 @@ const Tweet = (props: ITweetProps) => {
     );
 };
 
-export default Tweet;
+const areEqual = (prevProps: ITweetProps, nextProps: ITweetProps) => {
+    return prevProps === nextProps ? true : false;
+};
+
+export default memo(Tweet, areEqual);

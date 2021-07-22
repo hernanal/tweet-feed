@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { IHashtagProps } from '../types/dataTypes';
 
 const HashtagButton = (props: IHashtagProps) => {
@@ -8,4 +9,8 @@ const HashtagButton = (props: IHashtagProps) => {
     );
 };
 
-export default HashtagButton;
+const areEqual = (prevProps: IHashtagProps, nextProps: IHashtagProps) => {
+    return prevProps === nextProps ? true : false;
+};
+
+export default memo(HashtagButton, areEqual);
