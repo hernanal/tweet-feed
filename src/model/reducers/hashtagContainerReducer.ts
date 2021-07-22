@@ -19,6 +19,6 @@ const hashtagContainerSlice = createSlice({
     }
 });
 
-export const {getHashtags, addNewHashtags } = hashtagContainerSlice.actions;
+export const { getHashtags, addNewHashtags } = hashtagContainerSlice.actions;
 
 export default hashtagContainerSlice.reducer;
