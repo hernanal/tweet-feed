@@ -6,11 +6,12 @@ export interface ITitleProps {
 export interface ISearchBarProps {
     placeholder: string;
     value: string;
-    onChange: any; 
+    onChange: () => any; 
 }
 
 export interface ITweetListProps {
     tweets: ITweetProps[];
+    onClickTweetHashtag: () => any;
 }
 
 export interface ITweetProps {
@@ -18,14 +19,17 @@ export interface ITweetProps {
     image: string;
     name: string;
     text: string;
+    onClickHashtag: () => any;
 }
 
 export interface IHashtagProps {
+    onClick: () => any;
     text: string;
 }
 
 export interface IHashtagContainerProps {
     hashtagList: IHashtagProps[];
+    onClickHashtag: () => any;
 }
 
 // Action types

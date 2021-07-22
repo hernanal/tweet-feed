@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import React from 'react';
 import { ITweetProps, IHashtagProps } from '../types/dataTypes';
 import HashtagButton from './HashtagButton';
 
@@ -11,7 +11,7 @@ const Tweet = (props: ITweetProps) => {
             <div id='tweet-info'>
                 <h4>{`@${props.name}`}</h4>
                 <div>{props.text}</div>
-                {props.hashtags.map((hashtag: IHashtagProps, index: number) => <HashtagButton key={index} text={hashtag.text}/>)}
+                {props.hashtags.map((hashtag: IHashtagProps, index: number) => <HashtagButton onClick={props.onClickHashtag} key={index} text={hashtag.text}/>)}
             </div>
         </div>
     );
@@ -21,4 +21,4 @@ const areEqual = (prevProps: ITweetProps, nextProps: ITweetProps) => {
     return prevProps === nextProps ? true : false;
 };
 
-export default memo(Tweet, areEqual);
+export default React.memo(Tweet, areEqual);

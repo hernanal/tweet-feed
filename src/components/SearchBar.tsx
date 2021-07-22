@@ -1,3 +1,4 @@
+import React from 'react';
 import { ISearchBarProps } from '../types/dataTypes';
 
 const SearchBar = (props: ISearchBarProps) => {
