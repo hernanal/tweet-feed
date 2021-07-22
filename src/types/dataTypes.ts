@@ -54,3 +54,7 @@ export interface ISearchBarStore {
 export interface ITweetFeedStore {
     tweets: ITweetProps[];
 }
+
+export interface IHashtagContainerStore {
+    hashtags: IHashtagProps[];
+}
