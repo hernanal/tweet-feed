@@ -1,3 +1,5 @@
+import { TWITTER_SEARCH_API } from '../src/constants';
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
@@ -19,7 +21,7 @@ const server = http.createServer(app);
 
 const BEARER_TOKEN = 'AAAAAAAAAAAAAAAAAAAAAI4OHgEAAAAAlbk0HSIAqcc3havrrU9j2NeAQ34%3DzJmzwHuQerd8JJ2TeuHfqwKgBt6bK4tk93w3ocBB2vPuKMF3cG';
 
-const searchURL = (searchParam) => new URL(`https://api.twitter.com/1.1/search/tweets.json?q=${searchParam}&count=5&result_type=popular`);
+const searchURL = (searchParam) => new URL(`${TWITTER_SEARCH_API}?q=${searchParam}&count=5&result_type=popular`);
 
 app.get('/api/search', async (_req, res) => {
     if (!BEARER_TOKEN) {
