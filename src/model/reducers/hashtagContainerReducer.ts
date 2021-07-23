@@ -9,7 +9,7 @@ const hashtagContainerSlice = createSlice({
     name: 'hashtagcontainer',
     initialState,
     reducers: {
-        getHashtags(state: IHashtagContainerStore, action) {
+        setHashtags(state: IHashtagContainerStore, action) {
             state.hashtags = action.payload;
         },
         addNewHashtags(state: IHashtagContainerStore, action) {
@@ -19,6 +19,6 @@ const hashtagContainerSlice = createSlice({
     }
 });
 
-export const { getHashtags, addNewHashtags } = hashtagContainerSlice.actions;
+export const { setHashtags, addNewHashtags } = hashtagContainerSlice.actions;
 
 export default hashtagContainerSlice.reducer;
