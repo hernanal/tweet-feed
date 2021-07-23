@@ -1,6 +1,6 @@
 // Component prop types
 interface IClickable {
-    onClick: () => any;
+    onClick?: () => any;
     text: string;
 }
 
@@ -11,7 +11,6 @@ export interface ITitleProps {
 export interface ISearchBarProps {
     placeholder: string;
     value: string;
-    onChange: () => any; 
 }
 
 export interface ITweetListProps {
@@ -25,7 +24,7 @@ export interface ITweetProps {
     image: string;
     name: string;
     text: string;
-    onClickHashtag: () => any;
+    onClickHashtag?: () => any;
 }
 
 export interface IHashtagProps extends IClickable {}
@@ -37,14 +36,6 @@ export interface IHashtagContainerProps {
 
 export interface ILinkProps extends IClickable {}
 
-// Action types
-export interface IAction {
-    type: string;
-}
-
-export interface IKeywordChange extends IAction {
-    keyword: string;
-}
 
 // Store types
 export interface ISearchBarStore {
@@ -58,4 +49,49 @@ export interface ITweetFeedStore {
 
 export interface IHashtagContainerStore {
     hashtags: IHashtagProps[];
+}
+
+export interface IRootStore {
+    hashtagContainerReducer: IHashtagContainerStore;
+    searchBarSlice: ISearchBarStore;
+    tweetFeedReducer: ITweetFeedStore;
+}
+
+
+// Service response types
+export interface ITwitterSearchResponse {
+    data: ITwitterSearchData;
+}
+
+export interface ITwitterSearchData {
+    statuses: ITweetStatus[];
+    search_metadata: ITwitterSearchMetaData;
+}
+
+export interface ITwitterSearchMetaData {
+    max_id: string;
+    next_results: string;
+    query: string;
+    count: number;
+}
+
+export interface ITweetStatus {
+    id: number;
+    text: string;
+    entities: ITweetEntities;
+    user: ITweetUser;
+}
+
+interface ITweetEntities {
+    hashtags: ITweetHashtag[];
+}
+
+interface ITweetHashtag {
+    text: string;
+}
+
+interface ITweetUser {
+    id: number;
+    screen_name: string;
+    profile_image_url: string;
 }
