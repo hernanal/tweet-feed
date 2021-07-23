@@ -1,10 +1,13 @@
-import { combineReducers } from 'redux';
-import searchBarReducer from './searchBarReducer';
-import tweetFeedReducer from './tweetFeedReducer';
+import { AnyAction, CombinedState, combineReducers, Reducer } from 'redux';
+import hashtagContainerReducer from './hashtagContainerReducer';
+import searchBarSlice from './searchBarReducer';
+import tweetFeedSlice from './tweetFeedReducer';
+import { IRootStore } from '../../types/dataTypes';
 
-const rootReducer = combineReducers({
-    searchBarReducer,
-    tweetFeedReducer
+const rootReducer: Reducer<CombinedState<IRootStore>, AnyAction> = combineReducers({
+    hashtagContainerReducer,
+    searchBarSlice,
+    tweetFeedReducer: tweetFeedSlice
 });
 
 export default rootReducer;

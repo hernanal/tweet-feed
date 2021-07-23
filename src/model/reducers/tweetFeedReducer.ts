@@ -10,7 +10,7 @@ const tweetFeedSlice = createSlice({
     name: 'tweetfeed',
     initialState,
     reducers: {
-        getTweets(state: ITweetFeedStore, action) {
+        setTweets(state: ITweetFeedStore, action) {
             state.tweets = action.payload;
         },
         loadMoreTweets(state: ITweetFeedStore, action) {
@@ -35,6 +35,6 @@ const tweetFeedSlice = createSlice({
     }
 });
 
-const { getTweets, loadMoreTweets, filterTweets, unsetFilter } = tweetFeedSlice.actions;
+export const { setTweets, loadMoreTweets, filterTweets, unsetFilter } = tweetFeedSlice.actions;
 
 export default tweetFeedSlice.reducer;
