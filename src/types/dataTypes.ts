@@ -95,3 +95,10 @@ interface ITweetUser {
     screen_name: string;
     profile_image_url: string;
 }
+
+
+// Formatted objects
+export interface IFormattedSearchStatuses {
+    hashtags: IHashtagProps[];
+    tweets: ITweetProps[];
+}
