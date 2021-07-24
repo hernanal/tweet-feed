@@ -1,6 +1,6 @@
 // Component prop types
 interface IClickable {
-    onClick?: () => any;
+    onClick?: any;
     text: string;
 }
 
@@ -10,10 +10,9 @@ export interface ITitleProps {
 
 export interface ISearchBarProps {
     placeholder: string;
-    value: string;
 }
 
-export interface ITweetListProps {
+export interface ITweetFeedProps {
     tweets: ITweetProps[];
     onClickTweetHashtag: () => any;
     onClickLoadMore: () => any;
@@ -45,6 +44,7 @@ export interface ISearchBarStore {
 export interface ITweetFeedStore {
     tweets: ITweetProps[];
     prevTweets: ITweetProps[];
+    loadMoreURL: string;
 }
 
 export interface IHashtagContainerStore {
@@ -55,6 +55,13 @@ export interface IRootStore {
     hashtagContainerReducer: IHashtagContainerStore;
     searchBarSlice: ISearchBarStore;
     tweetFeedReducer: ITweetFeedStore;
+}
+
+
+// Action type
+export interface ISetTweetsAction {
+    loadMoreURL: string;
+    tweets: ITweetProps[];
 }
 
 

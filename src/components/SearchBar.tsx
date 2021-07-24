@@ -5,7 +5,7 @@ import { setTweets } from '../model/reducers/tweetFeedReducer';
 import { useDispatch } from 'react-redux';
 import throttle from 'lodash/throttle';
 import { setHashtags } from '../model/reducers/hashtagContainerReducer';
-import { debounce, formatTweets } from '../model/actions/helpers/searchBarHelper';
+import { debounce, formatTweets } from '../model/actions/helpers/appHelper';
 import { getTweets } from '../model/actions/searchBarActions';
 
 const SearchBar = (props: ISearchBarProps) => {
@@ -22,7 +22,8 @@ const SearchBar = (props: ISearchBarProps) => {
 
             const searchResponse: ITwitterSearchData | null = await getTweets(keyword);
             const formatted: IFormattedSearchStatuses = searchResponse && searchResponse.statuses ? formatTweets(searchResponse.statuses) : { hashtags: [], tweets: [] };
-            dispatch(setTweets(formatted.tweets));
+            const loadMoreURL: string = searchResponse && searchResponse.search_metadata ? searchResponse.search_metadata.next_results : '';
+            dispatch(setTweets({ loadMoreURL, tweets: formatted.tweets}));
             dispatch(setHashtags(formatted.hashtags));
         }
     }, 1000);

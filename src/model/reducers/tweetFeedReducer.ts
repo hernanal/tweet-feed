@@ -1,21 +1,23 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { ITweetFeedStore } from '../../types/dataTypes';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ISetTweetsAction, ITweetFeedStore } from '../../types/dataTypes';
 
 const initialState: ITweetFeedStore = {
     tweets: [],
-    prevTweets: []
+    prevTweets: [],
+    loadMoreURL: ''
 };
 
 const tweetFeedSlice = createSlice({
     name: 'tweetfeed',
     initialState,
     reducers: {
-        setTweets(state: ITweetFeedStore, action) {
-            state.tweets = action.payload;
+        setTweets(state: ITweetFeedStore, action: PayloadAction<ISetTweetsAction>) {
+            state.tweets = action.payload.tweets;
+            state.loadMoreURL = action.payload.loadMoreURL;
         },
-        loadMoreTweets(state: ITweetFeedStore, action) {
-            const loadMore: never[] = action.payload
-            state.tweets.push(...loadMore);
+        loadMoreTweets(state: ITweetFeedStore, action: PayloadAction<ISetTweetsAction>) {
+            state.tweets.push(...action.payload.tweets);
+            state.loadMoreURL = action.payload.loadMoreURL;
         },
         filterTweets(state: ITweetFeedStore, action) {
             state.prevTweets = [...state.tweets];
@@ -28,7 +30,7 @@ const tweetFeedSlice = createSlice({
             }
             state.tweets = filtered;
         },
-        unsetFilter(state: ITweetFeedStore, action) {
+        unsetFilter(state: ITweetFeedStore) {
             state.tweets = [...state.prevTweets];
             state.prevTweets = [];
         }
