@@ -1,4 +1,3 @@
-import { TWITTER_SEARCH_API } from '../src/constants';
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
@@ -6,7 +5,7 @@ const http = require("http");
 const util = require('util');
 const request = require('request');
 const get = util.promisify(request.get);
-// const cors = require('cors');
+const TWITTER_SEARCH_API = 'https://api.twitter.com/1.1/search/tweets.json';
 
 const app = express();
 let port = process.env.PORT || 3000;
@@ -22,7 +21,6 @@ const BEARER_TOKEN = 'AAAAAAAAAAAAAAAAAAAAAI4OHgEAAAAAlbk0HSIAqcc3havrrU9j2NeAQ3
 
 const searchURL = (searchParam) => new URL(`${TWITTER_SEARCH_API}?q=${searchParam}&count=5&result_type=popular`);
 const loadMoreURL = (queryPath) => new URL(`${TWITTER_SEARCH_API}${queryPath}`);
-
 app.get('/api/search', async (_req, res) => {
     if (!BEARER_TOKEN) {
         res.status(400).send('Could not authenticate');
@@ -58,7 +56,7 @@ app.get('/api/search', async (_req, res) => {
     }
 });
 
-app.get('/api/search/loadmore', async (_req, res) => {
+app.get('/api/loadmore', async (_req, res) => {
     if (!BEARER_TOKEN) {
         res.status(400).send('Could not load more');
     }
