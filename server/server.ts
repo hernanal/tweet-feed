@@ -60,7 +60,6 @@ app.get('/api/loadmore', async (_req, res) => {
     if (!BEARER_TOKEN) {
         res.status(400).send('Could not load more');
     }
-    console.log(res.req);
     const token = BEARER_TOKEN;
     const requestConfig = {
         url: loadMoreURL(res.req.query.loadMoreQuery),

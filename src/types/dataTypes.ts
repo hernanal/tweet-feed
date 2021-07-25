@@ -14,8 +14,6 @@ export interface ISearchBarProps {
 
 export interface ITweetFeedProps {
     tweets: ITweetProps[];
-    onClickTweetHashtag: () => any;
-    onClickLoadMore: () => any;
 }
 
 export interface ITweetProps {
@@ -29,8 +27,7 @@ export interface ITweetProps {
 export interface IHashtagProps extends IClickable {}
 
 export interface IHashtagContainerProps {
-    hashtagList: IHashtagProps[];
-    onClickHashtag: () => any;
+    hashtagList: string[];
 }
 
 export interface ILinkProps extends IClickable {}
@@ -45,10 +42,11 @@ export interface ITweetFeedStore {
     tweets: ITweetProps[];
     prevTweets: ITweetProps[];
     loadMoreURL: string;
+    filterBy: string;
 }
 
 export interface IHashtagContainerStore {
-    hashtags: IHashtagProps[];
+    hashtags: string[];
 }
 
 export interface IRootStore {
@@ -106,6 +104,6 @@ interface ITweetUser {
 
 // Formatted objects
 export interface IFormattedSearchStatuses {
-    hashtags: IHashtagProps[];
+    hashtags: string[];
     tweets: ITweetProps[];
 }

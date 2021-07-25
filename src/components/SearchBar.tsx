@@ -26,9 +26,9 @@ const SearchBar = (props: ISearchBarProps) => {
             dispatch(setTweets({ loadMoreURL, tweets: formatted.tweets}));
             dispatch(setHashtags(formatted.hashtags));
         }
-    }, 1000);
+    }, 300);
 
-    const debouncedSearchByKeyword = useMemo(() => debounce(searchByKeyword, 1000), [searchByKeyword]);
+    const debouncedSearchByKeyword = useMemo(() => debounce(searchByKeyword, 300), [searchByKeyword]);
 
     return (
         <div data-testid="search-bar">

@@ -7,7 +7,7 @@ const HashtagContainer = (props: IHashtagContainerProps) => {
     return (
         <div data-testid="hashtag-container">
             <Title text='Filter by hashtag'/>
-            {props.hashtagList.map((hashtag: IHashtagProps, index: number) => <HashtagButton onClick={props.onClickHashtag} key={index} text={hashtag.text}/>)}
+            {props.hashtagList.map((hashtag: string, index: number) => <HashtagButton key={index} text={hashtag}/>)}
         </div>
     );
 };
