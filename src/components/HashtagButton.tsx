@@ -1,10 +1,18 @@
 import React from 'react';
-import { IHashtagProps } from '../types/dataTypes';
+import { useDispatch, useSelector } from 'react-redux';
+import { filterTweets, unsetFilter } from '../model/reducers/tweetFeedReducer';
+import { IHashtagProps, IRootStore } from '../types/dataTypes';
 
 const HashtagButton = (props: IHashtagProps) => {
+    const dispatch = useDispatch();
+    const { filterBy } = useSelector((state: IRootStore) => state.tweetFeedReducer);
+    
+    const handleClick = () => {
+        filterBy !== props.text ? dispatch(filterTweets(props.text)) : dispatch(unsetFilter());
+    };
     return (
         <div>
-            <button type='button' onClick={props.onClick}>{props.text}</button>
+            <button type='button' onClick={handleClick}>{props.text}</button>
         </div>
     );
 };

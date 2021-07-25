@@ -4,7 +4,8 @@ import { ISetTweetsAction, ITweetFeedStore } from '../../types/dataTypes';
 const initialState: ITweetFeedStore = {
     tweets: [],
     prevTweets: [],
-    loadMoreURL: ''
+    loadMoreURL: '',
+    filterBy: ''
 };
 
 const tweetFeedSlice = createSlice({
@@ -14,6 +15,8 @@ const tweetFeedSlice = createSlice({
         setTweets(state: ITweetFeedStore, action: PayloadAction<ISetTweetsAction>) {
             state.tweets = action.payload.tweets;
             state.loadMoreURL = action.payload.loadMoreURL;
+            state.filterBy = '';
+            state.prevTweets = [];
         },
         loadMoreTweets(state: ITweetFeedStore, action: PayloadAction<ISetTweetsAction>) {
             state.tweets.push(...action.payload.tweets);
@@ -21,18 +24,20 @@ const tweetFeedSlice = createSlice({
         },
         filterTweets(state: ITweetFeedStore, action) {
             state.prevTweets = [...state.tweets];
-
-            const filtered = [];
+            state.filterBy = action.payload;
+            const filteredTweets = [];
             for (const tweet of state.tweets) {
-                if (tweet.hashtags.indexOf(action.payload) > -1) {
-                    filtered.push(tweet);
+                const filteredHashtags = tweet.hashtags.filter((hashtag) => hashtag.text === action.payload);
+                if (filteredHashtags.length > 0) {
+                    filteredTweets.push(tweet);
                 }
             }
-            state.tweets = filtered;
+            state.tweets = filteredTweets;
         },
         unsetFilter(state: ITweetFeedStore) {
             state.tweets = [...state.prevTweets];
             state.prevTweets = [];
+            state.filterBy = '';
         }
     }
 });
