@@ -1,7 +1,7 @@
 import React from "react";
 import Title from "./Title";
 import HashtagButton from "./HashtagButton";
-import { IHashtagProps, IHashtagContainerProps } from '../types/dataTypes';
+import { IHashtagContainerProps } from '../types/dataTypes';
 
 const HashtagContainer = (props: IHashtagContainerProps) => {
     return (
