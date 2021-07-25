@@ -10,7 +10,7 @@ export const debounce = (func: any, timeout: number) => {
 
 // PERFORMANCE CHECK
 export const formatTweets = (tweetStatuses: ITweetStatus[]): IFormattedSearchStatuses => {
-    const hashtagStrings: string[] = [];
+    let hashtags: string[] = [];
     const tweets: ITweetProps[] = tweetStatuses.map((tweet: ITweetStatus) => {
         const formattedTweet: ITweetProps = {
             hashtags: tweet.entities.hashtags,
@@ -18,14 +18,16 @@ export const formatTweets = (tweetStatuses: ITweetStatus[]): IFormattedSearchSta
             name: tweet.user.screen_name,
             text: tweet.text
         }
-        formattedTweet.hashtags.forEach((hashtag) => hashtagStrings.push(hashtag.text));
+        formattedTweet.hashtags.forEach((hashtag: IHashtagProps) => hashtags.push(hashtag.text));
 
         return formattedTweet;
     });
 
-    const hashtagSet = [...new Set(hashtagStrings)];
-    const hashtags: IHashtagProps[] = hashtagSet.map((hashtag) => { 
-        return { text: hashtag } 
-    });
+    hashtags = [...new Set(hashtags)];
     return { hashtags, tweets };
+};
+
+export const removeDuplicateHashtags = (newTags: string[], existingTags: string[]): string[] => {
+    const tags: string[] = existingTags.concat(...newTags);
+    return [...new Set(tags)];
 };
