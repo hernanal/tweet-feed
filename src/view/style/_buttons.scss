@@ -9,6 +9,17 @@
         font-size: 16px;
         white-space: nowrap;
         margin: 10px;
+
+        &--disabled {
+            border-radius: 16px;
+            border: none;
+            padding: 10px 20px;
+            cursor: no-drop;
+            color: gray;
+            font-size: 16px;
+            white-space: nowrap;
+            margin: 10px;
+        }
     }
 
     &__load-more-container {

@@ -12,7 +12,7 @@ const HashtagButton = (props: IHashtagProps) => {
     };
     return (
         <div>
-            <button type='button' className='button__hashtag' onClick={handleClick}>{`#${props.text}`}</button>
+            <button disabled={filterBy !== props.text && filterBy !== '' ? true : false} type='button' className={`button__hashtag${filterBy !== props.text && filterBy !== '' ? '--disabled' : ''}`} onClick={handleClick}>{`#${props.text}`}</button>
         </div>
     );
 };

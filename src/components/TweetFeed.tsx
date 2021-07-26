@@ -12,7 +12,7 @@ import { setHashtags } from '../model/reducers/hashtagContainerReducer';
 const TweetFeed = (props: ITweetFeedProps) => {
     const dispatch = useDispatch();
     const [hideLoadMore, setHideLoadMore] = useState(false);
-    const { loadMoreURL } = useSelector((state: IRootStore) => state.tweetFeedReducer);
+    const { loadMoreURL, filterBy } = useSelector((state: IRootStore) => state.tweetFeedReducer);
     const { hashtags } = useSelector((state: IRootStore) => state.hashtagContainerReducer);
     const loadMore = throttle(async () => {
         const loadMoreResponse: ITwitterSearchData | null = await loadMoreTweets(loadMoreURL);
@@ -28,7 +28,7 @@ const TweetFeed = (props: ITweetFeedProps) => {
     return (
         <div data-testid="tweet-list" className='tweetfeed__tweets-container'>
             {props.tweets.map((tweet: ITweetProps, index: number) => <Tweet key={index} name={tweet.name} text={tweet.text} hashtags={tweet.hashtags} image={tweet.image} url={tweet.url} />)}
-            <div style={hideLoadMore || props.tweets.length === 0 ? { display: 'none'} : {}}>
+            <div style={hideLoadMore || filterBy !== '' || props.tweets.length === 0 ? { display: 'none'} : {}}>
                 <ButtonLink className='button__load-more' onClick={debouncedLoadMore} text={'Load more'} />
             </div>
         </div>
