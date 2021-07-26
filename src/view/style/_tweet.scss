@@ -1,7 +1,7 @@
 .tweet {
     &__container {
         display: flex;
-        margin-right: 40px;
+        padding: 0px 40px 0px 5px;
     }
 
     &__img-container {
@@ -23,4 +23,8 @@
             font-size: 18px;
         }
     }
+}
+
+.tweet__container:nth-child(even) {
+    background-color: #EAEAEA;
 }
