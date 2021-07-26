@@ -1,0 +1,44 @@
+.tweetfeed {
+    &__container {
+        width: 65%;
+    }
+
+    &__hashtag-container {
+        width: 30%;
+        margin-left: 15px;
+    }
+
+    &__hashtags {
+        min-height: 50px;
+        padding: 10px;
+        background-color: white;
+        box-shadow: 0 3px 10px RGB(0 0 0 / 0.2);
+    }
+
+    &__tweets-container {
+        margin: 15px 0px 15px 0;
+        padding: 5px;
+        background-color: white;
+        box-shadow: 0 3px 10px RGB(0 0 0 / 0.2);
+    }
+
+    &__search-bar-container {
+        margin-right: 5px;
+    }
+
+    &__search-input {
+        width: 93%;
+        padding-left: 7%;
+        height: 40px;
+    }
+
+    &__search-icon {
+        position: absolute;
+        margin: 1.75%;
+        color: #a9a9a9;
+    }
+
+    &__title {
+        margin-bottom: 20px;
+    }
+}

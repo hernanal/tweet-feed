@@ -25,7 +25,7 @@ const TweetFeed = (props: ITweetFeedProps) => {
     const debouncedLoadMore = useMemo(() => debounce(loadMore, 300), [loadMore]);
 
     return (
-        <div data-testid="tweet-list">
+        <div data-testid="tweet-list" className='tweetfeed__tweets-container'>
             {props.tweets.map((tweet: ITweetProps, index: number) => <Tweet key={index} name={tweet.name} text={tweet.text} hashtags={tweet.hashtags} image={tweet.image} />)}
             <div>
                 <ButtonLink onClick={debouncedLoadMore} text={'Load more'} />

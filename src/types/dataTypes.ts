@@ -5,6 +5,7 @@ interface IClickable {
 }
 
 export interface ITitleProps {
+    className?: string;
     text: string;
 };
 

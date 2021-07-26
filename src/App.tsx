@@ -1,5 +1,4 @@
 import React from 'react';
-import './view/style/main.scss';
 import Title from './components/Title';
 import SearchBar from './components/SearchBar';
 import TweetFeed from './components/TweetFeed';
@@ -12,14 +11,16 @@ const App = () => {
   const { hashtags } = hashtagContainerReducer;
   const { tweets } = tweetFeedReducer;
   return (
-    <div className="main">
-      <div>
-        <Title text='Twitter Feed' />
-        <SearchBar placeholder='Search by keyword' />
-        <TweetFeed tweets={tweets} />
-      </div>
-      <div>
-        <HashtagContainer hashtagList={hashtags} />
+    <div className='main'>
+      <Title className='tweetfeed__title' text='Twitter Feed' />
+      <div className='flex'>
+        <div className='tweetfeed__container'>
+          <SearchBar placeholder='Search by keyword' />
+          <TweetFeed tweets={tweets} />
+        </div>
+        <div className='tweetfeed__hashtag-container'>
+          <HashtagContainer hashtagList={hashtags} />
+        </div>
       </div>
     </div>
   );

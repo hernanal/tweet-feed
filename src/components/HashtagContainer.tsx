@@ -5,7 +5,7 @@ import { IHashtagContainerProps } from '../types/dataTypes';
 
 const HashtagContainer = (props: IHashtagContainerProps) => {
     return (
-        <div data-testid="hashtag-container">
+        <div data-testid="hashtag-container" className='tweetfeed__hashtags'>
             <Title text='Filter by hashtag'/>
             {props.hashtagList.map((hashtag: string, index: number) => <HashtagButton key={index} text={hashtag}/>)}
         </div>

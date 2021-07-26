@@ -31,8 +31,9 @@ const SearchBar = (props: ISearchBarProps) => {
     const debouncedSearchByKeyword = useMemo(() => debounce(searchByKeyword, 300), [searchByKeyword]);
 
     return (
-        <div data-testid="search-bar">
-            <input type='text' value={keyword} placeholder={props.placeholder} onChange={handleChange} onKeyUp={debouncedSearchByKeyword} />
+        <div data-testid="search-bar" className='tweetfeed__search-bar-container'>
+            <i className="fa fa-search tweetfeed__search-icon"></i>
+            <input className='tweetfeed__search-input' type='text' value={keyword} placeholder={props.placeholder} onChange={handleChange} onKeyUp={debouncedSearchByKeyword} />
         </div>
     );
 };
