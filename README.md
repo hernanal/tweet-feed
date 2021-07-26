@@ -5,7 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Introduction
 
-This is a development application allows users to search for tweets based on keyword and filter the results based on a selected hashtag. The application makes use of React.js, Redux.js, TypeScript, and Express.js to build the reverse proxy server to communicate with the Twitter API. 
+This is a development application that allows users to search for tweets based on keyword and filter the results based on a selected hashtag. The application makes use of React.js, Redux.js, TypeScript, and Express.js to build the reverse proxy server to communicate with the Twitter API. 
 
 ## Getting Started
 

@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const server = http.createServer(app);
 
-const BEARER_TOKEN = 'AAAAAAAAAAAAAAAAAAAAAI4OHgEAAAAAlbk0HSIAqcc3havrrU9j2NeAQ34%3DzJmzwHuQerd8JJ2TeuHfqwKgBt6bK4tk93w3ocBB2vPuKMF3cG';
+const BEARER_TOKEN = '';
 
 const searchURL = (searchParam) => new URL(`${TWITTER_SEARCH_API}?q=${searchParam}&count=5&result_type=popular`);
 const loadMoreURL = (queryPath) => new URL(`${TWITTER_SEARCH_API}${queryPath}`);
