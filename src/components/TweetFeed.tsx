@@ -28,7 +28,7 @@ const TweetFeed = (props: ITweetFeedProps) => {
         <div data-testid="tweet-list" className='tweetfeed__tweets-container'>
             {props.tweets.map((tweet: ITweetProps, index: number) => <Tweet key={index} name={tweet.name} text={tweet.text} hashtags={tweet.hashtags} image={tweet.image} url={tweet.url} />)}
             <div>
-                <ButtonLink onClick={debouncedLoadMore} text={'Load more'} />
+                <ButtonLink className='button__load-more' onClick={debouncedLoadMore} text={'Load more'} />
             </div>
         </div>
     );

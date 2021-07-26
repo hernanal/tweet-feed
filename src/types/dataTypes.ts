@@ -31,7 +31,9 @@ export interface IHashtagContainerProps {
     hashtagList: string[];
 }
 
-export interface ILinkProps extends IClickable {}
+export interface ILinkProps extends IClickable {
+    className?: string;
+}
 
 
 // Store types

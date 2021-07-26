@@ -7,7 +7,7 @@ const HashtagContainer = (props: IHashtagContainerProps) => {
     return (
         <div data-testid="hashtag-container" className='tweetfeed__hashtags'>
             <Title text='Filter by hashtag' />
-            <div className="flex marginTB20 nowrap">
+            <div className="flex marginTB20 wrap">
                 {props.hashtagList.map((hashtag: string, index: number) => <HashtagButton key={index} text={hashtag} />)}
             </div>
         </div>
