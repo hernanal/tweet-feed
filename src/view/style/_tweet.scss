@@ -1,0 +1,26 @@
+.tweet {
+    &__container {
+        display: flex;
+        margin-right: 40px;
+    }
+
+    &__img-container {
+        margin: 20px;
+    }
+
+    &__image {
+        border-radius: 50%;
+    }
+
+    &__info {
+        &--name {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 20px 0;
+        }
+
+        &--text {
+            font-size: 18px;
+        }
+    }
+}

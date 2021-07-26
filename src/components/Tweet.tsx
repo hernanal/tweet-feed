@@ -4,14 +4,19 @@ import HashtagButton from './HashtagButton';
 
 const Tweet = (props: ITweetProps) => {
     return (
-        <div>
-            <div id='tweet-profile-img'>
-                <img src={props.image} alt='Twitter profile'/>
+        <div className='tweet__container'>
+            <div id='tweet-profile-img' className='tweet__img-container'>
+                <img className='tweet__image' src={props.image} alt='Twitter profile' />
             </div>
             <div id='tweet-info'>
-                <h4>{`@${props.name}`}</h4>
-                <div>{props.text}</div>
-                {props.hashtags.map((hashtag: IHashtagProps, index: number) => <HashtagButton onClick={props.onClickHashtag} key={index} text={hashtag.text}/>)}
+                <h4 className='tweet__info--name'>{`@${props.name}`}</h4>
+                <div className='tweet__info--text'>
+                    {props.text}
+                    <span>
+                        <a href={props.url}>{props.url}</a>
+                    </span>
+                </div>
+                {props.hashtags.map((hashtag: IHashtagProps, index: number) => <HashtagButton key={index} text={hashtag.text} />)}
             </div>
         </div>
     );

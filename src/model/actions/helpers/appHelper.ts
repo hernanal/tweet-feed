@@ -16,8 +16,10 @@ export const formatTweets = (tweetStatuses: ITweetStatus[]): IFormattedSearchSta
             hashtags: tweet.entities.hashtags,
             image: tweet.user.profile_image_url,
             name: tweet.user.screen_name,
-            text: tweet.text
+            text: tweet.text,
+            url: tweet.entities.urls.length > 0 ? tweet.entities.urls[0].url : tweet.entities.media && tweet.entities.media.length > 0 ? tweet.entities.media[0].url : ''
         }
+        formattedTweet.text = formattedTweet.url !== '' ? formattedTweet.text.replace(formattedTweet.url, '') : '';
         formattedTweet.hashtags.forEach((hashtag: IHashtagProps) => hashtags.push(hashtag.text));
 
         return formattedTweet;

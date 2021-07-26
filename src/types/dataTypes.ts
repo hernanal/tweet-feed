@@ -22,7 +22,7 @@ export interface ITweetProps {
     image: string;
     name: string;
     text: string;
-    onClickHashtag?: () => any;
+    url: string;
 }
 
 export interface IHashtagProps extends IClickable {}
@@ -90,10 +90,21 @@ export interface ITweetStatus {
 
 interface ITweetEntities {
     hashtags: ITweetHashtag[];
+    media?: ITweetMedia[];
+    urls: ITweetURL[];
 }
 
 interface ITweetHashtag {
     text: string;
+}
+
+interface ITweetMedia {
+    id: number;
+    url: string;
+}
+
+interface ITweetURL {
+    url: string;
 }
 
 interface ITweetUser {
