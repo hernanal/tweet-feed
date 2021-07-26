@@ -10,6 +10,7 @@ export interface ITitleProps {
 };
 
 export interface ISearchBarProps {
+    className: string;
     placeholder: string;
 }
 

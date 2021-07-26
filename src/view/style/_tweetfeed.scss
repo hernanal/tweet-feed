@@ -22,7 +22,11 @@
     }
 
     &__search-bar-container {
-        margin-right: 10px;
+        display: flex;
+
+        &.mobile {
+            padding: 10px;
+        }
     }
 
     &__search-input {
@@ -39,5 +43,9 @@
 
     &__title {
         margin-bottom: 20px;
+
+        &--mobile {
+            margin: 10px;
+        }
     }
 }
