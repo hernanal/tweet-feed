@@ -1,0 +1,13 @@
+.button {
+    &__hashtag {
+        border-radius: 16px;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        background-color: #e8f4f8;
+        color: royalblue;
+        font-size: 16px;
+        white-space: nowrap;
+        margin: 10px;
+    }
+}

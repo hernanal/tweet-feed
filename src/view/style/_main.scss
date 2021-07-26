@@ -24,11 +24,18 @@ h4 {
 }
 
 .main {
-  // display: flex;
   margin: 0px 20%;
   position: relative;
 }
 
 .flex {
   display: flex;
+
+  &.marginTB20 {
+    margin: 20px 0;
+  }
+
+  &.nowrap {
+    flex-wrap: nowrap;
+  }
 }

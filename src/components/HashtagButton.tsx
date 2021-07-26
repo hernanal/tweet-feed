@@ -12,7 +12,7 @@ const HashtagButton = (props: IHashtagProps) => {
     };
     return (
         <div>
-            <button type='button' onClick={handleClick}>{props.text}</button>
+            <button type='button' className='button__hashtag' onClick={handleClick}>{`#${props.text}`}</button>
         </div>
     );
 };

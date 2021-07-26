@@ -16,7 +16,9 @@ const Tweet = (props: ITweetProps) => {
                         <a href={props.url}>{props.url}</a>
                     </span>
                 </div>
-                {props.hashtags.map((hashtag: IHashtagProps, index: number) => <HashtagButton key={index} text={hashtag.text} />)}
+                <div className="flex marginTB20 nowrap">
+                    {props.hashtags.map((hashtag: IHashtagProps, index: number) => <HashtagButton key={index} text={hashtag.text} />)}
+                </div>
             </div>
         </div>
     );
