@@ -21,14 +21,14 @@ const SearchBar = (props: ISearchBarProps) => {
             dispatch(onChangeKeyword(keyword));
 
             const searchResponse: ITwitterSearchData | null = await getTweets(keyword);
-            const formatted: IFormattedSearchStatuses = searchResponse && searchResponse.statuses ? formatTweets(searchResponse.statuses) : { hashtags: [], tweets: [] };
-            const loadMoreURL: string = searchResponse && searchResponse.search_metadata ? searchResponse.search_metadata.next_results : '';
+            const formatted: IFormattedSearchStatuses = searchResponse?.statuses ? formatTweets(searchResponse.statuses) : { hashtags: [], tweets: [] };
+            const loadMoreURL: string = searchResponse?.search_metadata ? searchResponse.search_metadata.next_results : '';
             dispatch(setTweets({ loadMoreURL, tweets: formatted.tweets}));
             dispatch(setHashtags(formatted.hashtags));
         }
     }, 300);
 
-    const debouncedSearchByKeyword = useMemo(() => debounce(searchByKeyword, 300), [searchByKeyword]);
+    const debouncedSearchByKeyword = useMemo(() => debounce(searchByKeyword, 1000), [searchByKeyword]);
 
     return (
         <div data-testid="search-bar" className={props.className}>
