@@ -18,7 +18,7 @@ const TweetFeed = (props: ITweetFeedProps) => {
         const loadMoreResponse: ITwitterSearchData | null = await loadMoreTweets(loadMoreURL);
         const formatted: IFormattedSearchStatuses = loadMoreResponse && loadMoreResponse.statuses ? formatTweets(loadMoreResponse.statuses) : { hashtags: [], tweets: [] };
         const loadMoreString: string = loadMoreResponse && loadMoreResponse.search_metadata ? loadMoreResponse.search_metadata.next_results : '';
-        loadMoreResponse && loadMoreResponse.statuses && loadMoreResponse.statuses.length === 0 ? setHideLoadMore(true) : loadMoreResponse && !loadMoreResponse.statuses ? setHideLoadMore(true) : setHideLoadMore(false);
+        loadMoreResponse?.statuses.length === 0 || !loadMoreResponse?.statuses ? setHideLoadMore(true) : setHideLoadMore(false);
         dispatch(loadMoreAC({ loadMoreURL: loadMoreString, tweets: formatted.tweets }));
         dispatch(setHashtags(removeDuplicateHashtags(formatted.hashtags, hashtags)));
     }, 3000);
