@@ -28,8 +28,31 @@ h4 {
   margin: 0px 20%;
   position: relative;
 
+  @media only screen and (min-width: 901px) {
+    display: inherit;
+  }
+  @media only screen and (max-width: 900px) {
+    display: none;
+  }
+  @media only screen and (max-width: 1600px) {
+    margin: 0px 10%;
+  }
+  @media only screen and (max-width: 1300px) {
+    margin: 0px 5%;
+  }
+  @media only screen and (max-width: 1000px) {
+    margin: 0px 2.5%;
+  }
+
   &.mobile {
     margin: 10px 0;
+
+    @media only screen and (max-width: 900px) {
+      display: inherit;
+    }
+    @media only screen and (min-width: 901px) {
+      display: none;
+    }
   }
 }
 
