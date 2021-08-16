@@ -1,4 +1,5 @@
 body {
+  background-color:#EAEAEA;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -15,13 +16,6 @@ code {
 h4 {
   font-weight: 500;
   margin: 0;
-}
-
-#root {
-  background-color:#EAEAEA;
-  height: 100vh;
-  padding-top: 20px;
-  overflow: auto;
 }
 
 .main {
