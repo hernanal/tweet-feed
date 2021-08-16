@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { IFormattedSearchStatuses, IRootStore, ITweetFeedProps, ITweetProps, ITwitterSearchData } from '../types/dataTypes';
 import Tweet from './Tweet';
 import ButtonLink from './ButtonLink';
@@ -25,14 +25,21 @@ const TweetFeed = (props: ITweetFeedProps) => {
 
     const debouncedLoadMore = useMemo(() => debounce(loadMore, 300), [loadMore]);
 
+    // Show load more on each new search
+    useEffect(() => setHideLoadMore(false), [props.tweets]);
+
     return (
         <div data-testid="tweet-list" className='tweetfeed__tweets-container'>
             {props.tweets.map((tweet: ITweetProps, index: number) => <Tweet key={index} name={tweet.name} text={tweet.text} hashtags={tweet.hashtags} image={tweet.image} url={tweet.url} />)}
-            <div style={hideLoadMore || filterBy !== '' || props.tweets.length === 0 ? { display: 'none'} : {}}>
+            <div style={hideLoadMore || filterBy !== '' || props.tweets.length === 0 || props.tweets.length < 5 ? { display: 'none'} : {}}>
                 <ButtonLink className='button__load-more' onClick={debouncedLoadMore} text={'Load more'} />
             </div>
         </div>
     );
 };
 
-export default TweetFeed;
+const areEqual = (prevProps: ITweetFeedProps, nextProps: ITweetFeedProps) => {
+    return prevProps === nextProps ? true : false;
+};
+
+export default React.memo(TweetFeed, areEqual);
