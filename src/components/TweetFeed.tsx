@@ -35,8 +35,4 @@ const TweetFeed = (props: ITweetFeedProps) => {
     );
 };
 
-const areEqual = (prevProps: ITweetFeedProps, nextProps: ITweetFeedProps) => {
-    return prevProps === nextProps ? true : false;
-};
-
-export default React.memo(TweetFeed, areEqual);
+export default TweetFeed;

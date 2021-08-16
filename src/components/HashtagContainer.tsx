@@ -14,8 +14,4 @@ const HashtagContainer = (props: IHashtagContainerProps) => {
     );
 };
 
-const areEqual = (prevProps: IHashtagContainerProps, nextProps: IHashtagContainerProps) => {
-    return prevProps === nextProps ? true : false;
-};
-
-export default React.memo(HashtagContainer, areEqual);
+export default HashtagContainer;

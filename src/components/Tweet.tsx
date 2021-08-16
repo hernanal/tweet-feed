@@ -24,8 +24,4 @@ const Tweet = (props: ITweetProps) => {
     );
 };
 
-const areEqual = (prevProps: ITweetProps, nextProps: ITweetProps) => {
-    return prevProps === nextProps ? true : false;
-};
-
-export default React.memo(Tweet, areEqual);
+export default Tweet;

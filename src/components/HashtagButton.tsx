@@ -17,8 +17,4 @@ const HashtagButton = (props: IHashtagProps) => {
     );
 };
 
-const areEqual = (prevProps: IHashtagProps, nextProps: IHashtagProps) => {
-    return prevProps === nextProps ? true : false;
-};
-
-export default React.memo(HashtagButton, areEqual);
+export default HashtagButton;
