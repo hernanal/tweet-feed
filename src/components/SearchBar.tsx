@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { IFormattedSearchStatuses, ISearchBarProps, ITwitterSearchData } from '../types/dataTypes';
 import { onChangeKeyword } from '../model/reducers/searchBarReducer';
 import { setTweets } from '../model/reducers/tweetFeedReducer';
@@ -10,30 +10,31 @@ import { getTweets } from '../model/actions/searchBarActions';
 
 const SearchBar = (props: ISearchBarProps) => {
     const dispatch = useDispatch();
-    const [keyword, setKeyword] = useState('');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setKeyword(e.target.value);
+        const keyword: string = e.target.value;
+        searchByKeyword(keyword);
     }
 
-    const searchByKeyword = throttle(async () => {
+    const searchByKeyword = throttle(async (keyword: string) => {
         if (keyword !== '') {
             dispatch(onChangeKeyword(keyword));
 
             const searchResponse: ITwitterSearchData | null = await getTweets(keyword);
             const formatted: IFormattedSearchStatuses = searchResponse?.statuses ? formatTweets(searchResponse.statuses) : { hashtags: [], tweets: [] };
             const loadMoreURL: string = searchResponse?.search_metadata ? searchResponse.search_metadata.next_results : '';
-            dispatch(setTweets({ loadMoreURL, tweets: formatted.tweets}));
+            dispatch(setTweets({ loadMoreURL, tweets: formatted.tweets }));
             dispatch(setHashtags(formatted.hashtags));
         }
     }, 300);
 
-    const debouncedSearchByKeyword = useMemo(() => debounce(searchByKeyword, 1000), [searchByKeyword]);
+    // eslint-disable-next-line
+    const debouncedChangeHandler = useMemo(() => debounce(handleChange, 300), []);
 
     return (
         <div data-testid="search-bar" className={props.className}>
             <i className="fa fa-search tweetfeed__search-icon"></i>
-            <input className='tweetfeed__search-input' type='text' value={keyword} placeholder={props.placeholder} onChange={handleChange} onKeyUp={debouncedSearchByKeyword} />
+            <input className='tweetfeed__search-input' type='text' placeholder={props.placeholder} onChange={debouncedChangeHandler} />
         </div>
     );
 };
